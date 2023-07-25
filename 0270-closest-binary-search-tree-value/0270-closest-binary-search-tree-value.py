@@ -8,19 +8,22 @@ class Solution:
 
             
     def closestValue(self, root: Optional[TreeNode], target: float) -> int:
-        stack, pred = [], float('-inf')
+        res = []
         
-        while stack or root:
-            while root:
-                stack.append(root)
-                root = root.left
-            root = stack.pop()
+        if root == None:
+                return
             
-            if pred <= target and target < root.val:
-                return min(pred, root.val, key = lambda x: abs(target - x))
-                
-            pred = root.val
-            root = root.right
-
-        return pred
-    
+        def inorder(node):
+            if node:
+                inorder(node.left)
+                res.append(node.val)
+                inorder(node.right)
+        inorder(root)
+        key = [-1]
+        minDiff = 99999999999
+        for i in res:
+            result = abs(target - i)
+            if result < minDiff:
+                key[0] = i
+                minDiff = result    
+        return key[0]
