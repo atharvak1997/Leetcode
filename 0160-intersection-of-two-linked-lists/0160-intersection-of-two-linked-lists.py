@@ -5,31 +5,35 @@
 #         self.next = None
 
 class Solution:
-    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
-        l1 = headA
-        l2 = headB
-        countA = 0
-        countB = 0
+    def getIntersectionNode(self, linkedListOne: ListNode, linkedListTwo: ListNode) -> Optional[ListNode]:
+        count1 = 0
+        count2 = 0
+
+        l1 = linkedListOne
+        l2 = linkedListTwo
 
         while l1:
-            countA += 1
+            count1 += 1
             l1 = l1.next
+
         while l2:
-            countB += 1
+            count2 += 1
             l2 = l2.next
-        final = abs(countA - countB)
-        
-        if countA > countB:
+        final = abs(count1 - count2)
+        if count1 > count2:
             while final:
-                headA = headA.next
                 final -= 1
-        if countB > countA:
+                linkedListOne = linkedListOne.next
+
+        elif count2 > count1:
             while final:
-                headB = headB.next
                 final -= 1
-        while headA and headB:
-            if headA == headB:
-                return headA
-            headA = headA.next
-            headB = headB.next
+                linkedListTwo = linkedListTwo.next
+
+        while linkedListOne and linkedListTwo:
+            if linkedListOne == linkedListTwo:
+                return linkedListOne
+            linkedListOne = linkedListOne.next
+            linkedListTwo = linkedListTwo.next
+
         return None
