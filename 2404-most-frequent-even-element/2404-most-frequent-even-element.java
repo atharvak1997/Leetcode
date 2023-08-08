@@ -9,20 +9,18 @@ class Solution {
             }
         }
         if(hashmap.isEmpty()) {
-            System.out.println(hashmap);
             return -1;
         }
         for(int key : hashmap.keySet()) {
             int count = hashmap.get(key);
-            System.out.println(count);
             maxValue = Math.max(maxValue, count);
         }
-        for(int key: hashmap.keySet()) {
-            if(hashmap.get(key).equals(maxValue)) {
-                numList.add(key);
+        int res = Integer.MAX_VALUE;
+        for(int key : hashmap.keySet()) {
+            if(hashmap.get(key) == maxValue) {
+                res = Math.min(res, key);
             }
         }
-        Collections.sort(numList);
-        return numList.get(0);
+        return res;
     }
 }
