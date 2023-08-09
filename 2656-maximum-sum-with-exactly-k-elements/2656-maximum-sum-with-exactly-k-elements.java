@@ -1,9 +1,19 @@
 class Solution {
     public int maximizeSum(int[] nums, int k) {
-        Arrays.sort(nums);
-        int sum=0;
-        int n= nums.length;
-        sum =nums[n-1]*k+(k*(k+1))/2-k;
-        return sum;
+        int maxVal = 0;
+        int total = 0;
+        
+        for(int i : nums) {
+            if(i > maxVal) {
+                maxVal = i;
+            }
+        }
+        while(k != 0) {
+            total = total + maxVal;
+            maxVal += 1;
+            k--;
+        }
+        
+        return total;
     }
 }
