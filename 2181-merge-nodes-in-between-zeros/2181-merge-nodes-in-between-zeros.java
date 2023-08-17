@@ -29,9 +29,7 @@ class Solution {
             sum1 = 0;
             finalres = finalres.next;
             
-        }
-        
-        
+        }        
         return res.next;
     }
 }
