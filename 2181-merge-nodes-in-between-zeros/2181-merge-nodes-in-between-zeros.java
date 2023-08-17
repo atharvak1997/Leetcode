@@ -10,33 +10,28 @@
  */
 class Solution {
     public ListNode mergeNodes(ListNode head) {
-        int sum = 0;
-        ListNode start = head;
-        ListNode end = head.next;
+        // ArrayList<ArrayList<Integer>> arr = new ArrayList<>();
+        // ArrayList<Integer> inner = new ArrayList<>();
+        ListNode res = new ListNode(0);
+        ListNode finalres = head;
+        int sum1 = 0;
+        ListNode finalH = res;
         
-        while(end != null) {
-            System.out.println(end.val);
-            while(end.val != 0) {
-                sum += end.val;
-                end = end.next;
+        while(finalres != null) {
+            while(finalres.val != 0) {
+                sum1 += finalres.val;
+                finalres = finalres.next;
             }
-            ListNode middle = new ListNode(sum);
-            sum = 0;
-            start.next = middle;
-            middle.next = end;
-            start = end;
-            end = end.next;
-        }
-
-        ListNode last = head;
-
-        while(last.next != null && last.next.next != null) {
-            if(last.val != 0) {
-                last.next = last.next.next;
+            if(sum1 != 0) {
+                finalH.next = new ListNode(sum1);
+                finalH = finalH.next;
             }
-            last = last.next;
+            sum1 = 0;
+            finalres = finalres.next;
+            
         }
-        last.next = null;
-        return head.next;
+        
+        
+        return res.next;
     }
 }
