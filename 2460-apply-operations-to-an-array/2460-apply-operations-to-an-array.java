@@ -1,6 +1,5 @@
 class Solution {
     public int[] applyOperations(int[] nums) {
-        int count = 0;
         int[] res = new int[nums.length];
         
         for(int i = 0; i < nums.length; i++) {
@@ -12,7 +11,6 @@ class Solution {
         int j = 0;
         for(int i = 0; i < nums.length; i++) {
             if(nums[i] == 0) {
-                count++;
             }
             else {
                 res[j] = nums[i];
