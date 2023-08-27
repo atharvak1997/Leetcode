@@ -10,23 +10,26 @@ class Solution {
         while(!stack.isEmpty()) {
             if(!stack.isEmpty() && stack.peek() == 'c') {
                 stack.pop();
-            } else {
+            }
+            else {
                 count++;
             }
             
             if(!stack.isEmpty() && stack.peek() == 'b') {
                 stack.pop();
-            } else {
+            }
+            else {
                 count++;
             }
             
             if(!stack.isEmpty() && stack.peek() == 'a') {
                 stack.pop();
-            } else {
+            }
+            else {
                 count++;
             }
-            
         }
+        
         return count;
     }
 }
