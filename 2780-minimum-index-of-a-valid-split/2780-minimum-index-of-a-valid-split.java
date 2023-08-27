@@ -1,31 +1,29 @@
 class Solution {
     public int minimumIndex(List<Integer> nums) {
-        HashMap<Integer, Integer> hashmap = new HashMap<>();
-        int ans = 0;
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        int dominant = 0;
         int count = 0;
-
-        for(int num : nums) {
-            hashmap.merge(num, 1, Integer::sum);
-        }
-
-        for(Map.Entry<Integer, Integer> map : hashmap.entrySet()) {
-            if(map.getValue()*2 > nums.size()) {
-                ans = map.getKey();
-                count = map.getValue();
-                break;
-            }
-        }
-
         int precount = 0;
-        for(int i = 0; i < nums.size(); i++) {
-            if(nums.get(i) == ans) {
-                precount++;
-                count--;
+        
+        for(int num : nums) {
+            hm.merge(num, 1, Integer::sum);
+        }
+        
+        for(Map.Entry<Integer, Integer> entry : hm.entrySet()) {
+            if(entry.getValue()*2 > nums.size()) {
+                dominant = entry.getKey();
+                count = entry.getValue();
             }
-            if(precount > (i+1) / 2 && count > (nums.size() - i - 1) / 2) {
+        }
+        for(int i = 0; i < nums.size(); i++) {
+            if(nums.get(i) == dominant) {
+                count--;
+                precount++;
+            }
+            if((precount*2) > (i+1) && count*2 > nums.size() - i - 1) {
                 return i;
             }
-        }
+        }        
         return -1;
     }
 }
