@@ -1,7 +1,7 @@
 class Solution {
     public int maxSubArray(int[] nums) {
         int total = 0;
-        int maxTotal = nums[0];
+        int maxT = nums[0];
         
         if(nums.length == 1) {
             return nums[0];
@@ -12,9 +12,9 @@ class Solution {
                 total = 0;
             }
             total += i;
-            maxTotal = Math.max(maxTotal, total);
+            maxT = Math.max(total, maxT);    
         }
-        System.out.println(maxTotal);
-        return maxTotal;
+        
+        return maxT;
     }
 }
