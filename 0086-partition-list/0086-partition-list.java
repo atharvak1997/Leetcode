@@ -10,27 +10,24 @@
  */
 class Solution {
     public ListNode partition(ListNode head, int x) {
-        ListNode small = new ListNode(0);
-        ListNode big = new ListNode(0);
-        ListNode headsm = new ListNode(0);
-        ListNode headbg = new ListNode(0);
+        ListNode l1 = new ListNode();
+        ListNode l2 = new ListNode();
+        ListNode templ2 = l2;
+        ListNode templ1 = l1;
         
-        
-        headsm = small;
-        headbg = big;
         while(head != null) {
             if(head.val < x) {
-                headsm.next = head;
-                headsm = headsm.next;
-            } else {
-                headbg.next = head;
-                headbg = headbg.next;
+                l1.next = new ListNode(head.val);
+                l1 = l1.next;
+            }
+            else {
+                l2.next = new ListNode(head.val);
+                l2 = l2.next;
             }
             head = head.next;
         }
-        headbg.next = null;
-        headsm.next = big.next;
+        l1.next = templ2.next;
         
-        return small.next;
+        return templ1.next;
     }
 }
