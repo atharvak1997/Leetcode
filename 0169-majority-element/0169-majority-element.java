@@ -1,16 +1,17 @@
 class Solution {
     public int majorityElement(int[] nums) {
-        HashMap<Integer,Integer> hashset = new HashMap<>();
+        HashMap<Integer, Integer> hashmap = new HashMap<>();
+        int n = nums.length;
         
-        for(int i : nums) {
-            hashset.merge(i, 1, Integer::sum);
+        for(int num : nums) {
+            hashmap.merge(num, 1, Integer::sum);
         }
-        for(int i : nums) {
-            int num = hashset.get(i);
-            if(num > nums.length/2) {
-                return i;
+        
+        for(Map.Entry<Integer, Integer> entry : hashmap.entrySet()) {
+            if(entry.getValue() > (n / 2)) {
+                return entry.getKey();
             }
         }
-        return 1;
+        return -1;
     }
 }
