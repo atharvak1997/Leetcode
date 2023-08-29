@@ -5,7 +5,7 @@ class Solution {
             if (s.charAt(i) == '0') {
                 ans = Math.min(num, ans + 1);
             } else {
-                ++num;
+                num++;
             }
         }
         return ans;
