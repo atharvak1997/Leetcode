@@ -1,16 +1,17 @@
 class Solution {
     public int lengthOfLastWord(String s) {
-        String[] strs = s.split(" ");
-        LinkedHashSet<String> hs = new LinkedHashSet<>();
         int len = 0;
-        String[] elem = new String[hs.size()];
         
-        for(String str : strs ) {
-            if(str != " ") {
-                hs.add(str);
+        for(int i = s.length() - 1; i >= 0; i--) {
+            if(s.charAt(i) != ' ') {
+                while(i >= 0 && s.charAt(i) != ' ') {
+                    len++;
+                    i--;
+                }
+                break;
             }
         }
-        elem = hs.toArray(elem);
-        return elem[elem.length - 1].length();
+        
+        return len;
     }
 }
