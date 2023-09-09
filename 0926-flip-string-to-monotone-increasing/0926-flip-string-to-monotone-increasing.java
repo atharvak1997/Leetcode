@@ -8,8 +8,9 @@ class Solution {
                     if(ch[i] == '1') {
                         c1++;
                     }
-                    else {
-                        c0 = Math.min(c0 + 1, c1);
+                    else if(c1 > 0) {
+                        c0++;
+                        c1--;
                     }
             }
                 return c0;
