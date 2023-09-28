@@ -9,8 +9,6 @@ class Solution:
         if len(version2) > len(version1):
             while len(version2) != len(version1):
                 version1.append("0")
-        print(version1)
-        print(version2)
         for i in range(len(version1)):
             if int(version1[i]) > int(version2[i]):
                 return 1
