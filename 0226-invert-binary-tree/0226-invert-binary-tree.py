@@ -6,15 +6,15 @@
 #         self.right = right
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
-        def postorder(node):
+        def preorder(node):
             if not node:
                 return None
             
             node.left, node.right = node.right, node.left
-            postorder(node.left)
-            postorder(node.right)
+            preorder(node.left)
+            preorder(node.right)
             return root
-        return postorder(root)
+        return preorder(root)
             
 
             
