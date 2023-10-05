@@ -19,7 +19,6 @@ class Solution:
                     q.append(node.right)
                     level.append(node.val)
             res.append(level)
-        print(res)
 
         answer = []
         for i in res:
