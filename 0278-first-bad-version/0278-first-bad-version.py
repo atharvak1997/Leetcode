@@ -9,7 +9,7 @@ class Solution:
             mid = (l + r) // 2
             if isBadVersion(mid) == True:
                 if isBadVersion(mid - 1):
-                    r = mid
+                    r = mid - 1
                 else:
                     return mid
             else:
