@@ -4,25 +4,23 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        def reverseN(nums, left, right):
-            while left < right:
-                nums[left], nums[right] = nums[right], nums[left]
-                left += 1
-                right -= 1
-            return nums
-
 
         k = k % len(nums)
         left = 0
         right = len(nums) - 1
 
-        nums = reverseN(nums, 0, len(nums) - 1)
+        nums = self.reverseN(nums, 0, len(nums) - 1)
         
-        nums = reverseN(nums, 0, k - 1)
+        nums = self.reverseN(nums, 0, k - 1)
 
-        nums = reverseN(nums, k, len(nums) - 1)
+        nums = self.reverseN(nums, k, len(nums) - 1)
 
-        
+    def reverseN(self, nums, left, right):
+            while left < right:
+                nums[left], nums[right] = nums[right], nums[left]
+                left += 1
+                right -= 1
+            return nums   
         
     
         
