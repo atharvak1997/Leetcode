@@ -1,17 +1,23 @@
 class Solution {
     public int lengthOfLastWord(String s) {
-        int len = 0;
-        
-        for(int i = s.length() - 1; i >= 0; i--) {
-            if(s.charAt(i) != ' ') {
-                while(i >= 0 && s.charAt(i) != ' ') {
-                    len++;
-                    i--;
-                }
-                break;
+        ArrayList<List> arrList = new ArrayList<>();
+        int i = 0;
+
+        while(i < s.length()) {
+            ArrayList<Character> arr = new ArrayList<>();
+            while(i < s.length() && Character.isAlphabetic(s.charAt(i))) {
+                arr.add(s.charAt(i));
+                i++;
             }
+            if(!arr.isEmpty()) {
+                arrList.add(arr);
+            }
+            i++;
         }
-        
-        return len;
+
+        int res = arrList.get(arrList.size() - 1).size();
+        System.out.println(res);
+
+        return res;
     }
 }
