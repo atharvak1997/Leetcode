@@ -31,7 +31,9 @@ class Solution {
                 arrList.add(root.val);
             }
             inorder(root.left, arrList);
-            
+            if(root.left == null && root.right == null) {
+                arrList.add(root.val);
+            }
             inorder(root.right, arrList);
 
             return arrList;
