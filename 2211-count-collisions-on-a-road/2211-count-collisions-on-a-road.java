@@ -1,7 +1,7 @@
 class Solution {
     public int countCollisions(String directions) {
         Stack<Character> stack = new Stack<>();
-        int coll = 0;
+        int collisions = 0;
         stack.push(directions.charAt(0));
 
         for(int i = 1; i < directions.length(); i++) {
@@ -10,20 +10,21 @@ class Solution {
             if(!stack.isEmpty() && stack.peek() == 'R' && curr == 'L') {
                 stack.pop();
                 curr = 'S';
-                coll += 2;
+                collisions += 2;
             }
-            else if(!stack.isEmpty() && stack.peek() == 'S' && curr == 'L') {
+            else if (!stack.isEmpty() && stack.peek() == 'S' && curr == 'L') {
                 curr = 'S';
-                coll += 1;
+                collisions += 1;
             }
-            while(!stack.isEmpty() && ((stack.peek() == 'R' && curr == 'S') )){
-                coll += 1;
+            while(!stack.isEmpty() && stack.peek() == 'R' && curr == 'S') {
+                curr = 'S';
                 stack.pop();
+                collisions += 1;
             }
 
             stack.push(curr);
         }
 
-        return coll;
+        return collisions;
     }
 }
