@@ -1,6 +1,5 @@
 class Solution {
     public int[][] mergeArrays(int[][] nums1, int[][] nums2) {
-        // ArrayList<List> answer = new ArrayList<>();
         HashMap<Integer, Integer> hm = new HashMap<>();
         int m = 0;
 
@@ -27,7 +26,6 @@ class Solution {
             i++;
         }
 
-        System.out.println(answer);
         Arrays.sort(answer, (a, b) -> a[0] - b[0]);
         return answer;
     }
