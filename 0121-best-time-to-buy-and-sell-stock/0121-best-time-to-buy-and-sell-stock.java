@@ -6,13 +6,14 @@ class Solution {
 
         while(sell < prices.length) {
             if(prices[sell] < prices[buy]) {
-                buy = sell;
+                prices[buy] = prices[sell];
             }
             else {
                 maxP = Math.max(maxP, prices[sell] - prices[buy]);
             }
             sell++;
         }
+
         return maxP;
     }
 }
