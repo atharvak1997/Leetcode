@@ -1,13 +1,15 @@
 class Solution {
     public int search(int[] nums, int target) {
-        int l = 0, r = nums.length - 1, mid = 0;
-        
+        int l = 0;
+        int r = nums.length - 1;
+
         while(l <= r) {
-            mid = (l + r) / 2;
+            int mid = (r + l) / 2;
+
             if(nums[mid] == target) {
                 return mid;
             }
-            
+
             if(nums[l] <= nums[mid]) {
                 if(target > nums[mid] || target < nums[l]) {
                     l = mid + 1;
@@ -17,15 +19,15 @@ class Solution {
                 }
             }
             else {
-                if(target > nums[r] || target < nums[mid]) {
+                if(target < nums[mid] || target > nums[r]) {
                     r = mid - 1;
                 }
                 else {
                     l = mid + 1;
                 }
             }
-            
         }
+
         return -1;
     }
 }
